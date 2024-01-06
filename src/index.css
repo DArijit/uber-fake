@@ -1,12 +1,12 @@
 @font-face {
-  font-family: 'UberMove';
-  src: url('./UberMoveBold.otf') format('opentype');
+  font-family: 'UberMoveMedium';
+  src: url('./UberMoveMedium.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
 body {
   margin: 0;
-  font-family: 'UberMove', sans-serif;
+  font-family: 'UberMoveMedium', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
