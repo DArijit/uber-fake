@@ -1,0 +1,246 @@
+
+
+.heroHeading {
+  font-weight: 500;
+  display: inline-block;
+}
+
+.heroDate {
+  font-weight: 400;
+  font-size: 10px;
+  display: inline-block;
+}
+
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-bottom: 2px;
+  border-bottom: 1px solid rgb(196, 196, 196);
+  height: 64px;
+}
+
+.salutationText {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.salutationText2 {
+  font-size: 10px;
+}
+
+.salutationContainer {
+  margin-top: 22px;
+}
+
+.totalContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-bottom: 2px;
+  border-bottom: 1px solid rgb(40, 40, 40);
+  height: 56px;
+}
+.totalHeading {
+  font-weight: 400;
+  display: inline-block;
+  font-size: 18px;
+}
+.totalAmt {
+  font-weight: 400;
+  display: inline-block;
+  font-size: 18px;
+}
+
+.totalTripContainer {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-bottom: 2px;
+  border-bottom: 1px solid rgb(196, 196, 196);
+  height: 40px;
+}
+.totalTripHeading {
+  font-weight: 400;
+  display: inline-block;
+  font-size: 10px;
+  color: rgb(83, 82, 82);
+}
+.totalTripAmt {
+  font-weight: 400;
+  display: inline-block;
+  font-size: 10px;
+  color: rgb(83, 82, 82);
+}
+
+.subtotalContainer {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  height: 5px;
+}
+.subtotalHeading {
+  font-weight: 700;
+  display: inline-block;
+  font-size: 10px;
+  color: rgb(83, 82, 82);
+}
+.subtotalAmt {
+  font-weight: 700;
+  display: inline-block;
+  font-size: 10px;
+  color: rgb(83, 82, 82);
+}
+
+.bookingFeeContainer {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  height: 5px;
+}
+.bookingFeeHeading {
+  font-weight: 400;
+  display: inline-block;
+  font-size: 10px;
+  color: rgb(83, 82, 82);
+}
+.bookingFeeAmt {
+  font-weight: 400;
+  display: inline-block;
+  font-size: 10px;
+  color: rgb(83, 82, 82);
+}
+
+.promotionContainer {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  height: 5px;
+}
+.promotionHeading {
+  font-weight: 400;
+  display: inline-block;
+  font-size: 10px;
+  color: rgb(83, 82, 82);
+}
+.promotionAmt {
+  font-weight: 700;
+  display: inline-block;
+  font-size: 10px;
+  color: rgb(94, 152, 55);
+}
+.subtotalMainContainer {
+  height: 81px;
+  border-bottom: 1px solid rgb(196, 196, 196);
+}
+
+.subtotalsAndTripChargeContainer {
+  height: 174px;
+  border-bottom: 1px solid rgb(196, 196, 196);
+}
+.paymentLogo {
+  width: 31px;
+}
+
+.paymentsContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-bottom: 2px;
+  height: 34px;
+}
+.paymentsHeading {
+  font-weight: 500;
+  display: inline-block;
+  font-size: 18px;
+}
+.totalTripAmt {
+  font-weight: 400;
+  display: inline-block;
+  font-size: 10px;
+  color: rgb(83, 82, 82);
+}
+
+.paymentsSectionContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-bottom: 2px;
+}
+
+.paymentLogoName {
+  font-size: 10px;
+  font-weight: 700;
+  display: block;
+}
+.paymentInfo {
+  display: inline-block;
+  margin-left: 20px;
+}
+.paymentDate {
+  font-size: 12px;
+}
+.paymentInfoDetails {
+  font-size: 10px;
+}
+
+.paymentInfoContainer {
+  border-bottom: 1px solid rgb(196, 196, 196);
+  height: 60px;
+}
+
+.anchorTag {
+  color: #18108a;
+}
+
+.receiptFooter {
+  font-size: 10px;
+  margin-top: 27px;
+}
+
+.driverName {
+  margin-bottom: -3px;
+  font-weight: 500;
+}
+.driverLicense {
+  margin-bottom: 22px;
+}
+
+.tripDetailsContainer {
+  display: flex;
+  align-items: baseline;
+}
+.skuTier {
+  font-weight: 500;
+  margin-right: 16px;
+}
+.tripDots1 {
+  margin-bottom: -2px;
+}
+.tripDots2 {
+  margin-top: -2px;
+}
+.tripLine {
+  border-left: 2px solid black;
+  height: 18px;
+  margin-bottom: -2px;
+  margin-left: 2.5px;
+}
+.mapTripContainer {
+  display: flex;
+}
+
+.mapStringsContainer {
+  margin-left: 41px;
+}
+.mapSVG {
+  margin-top: 7px;
+}
+.finalNote {
+  font-size: 10px;
+  margin-top: 30px;
+}
