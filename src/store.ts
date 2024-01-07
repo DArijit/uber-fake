@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
-import counterReducer from "./features/counter/counterSlice";
+import billDataReducer from "./uberFake/sidePanel/sidePanelSlice";
 
 export default configureStore({
-  reducer: { counter: counterReducer },
+  reducer: { billData: billDataReducer  },
 });

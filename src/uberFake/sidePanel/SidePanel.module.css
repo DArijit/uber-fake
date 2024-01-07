@@ -22,3 +22,11 @@
   overflow-y: auto;
   width: 97%;
 }
+.printButtonWrapper{
+  align-items: center;
+  justify-content: flex-end;
+  display: flex;  
+}
+.Button{
+  margin: 5px;
+}
