@@ -10,16 +10,18 @@ const UberFake = () => {
     window.print(); // Open print dialog and print visible DOM without any changes
   };
   return (
-      <div className={styles.mainContainer}>
-        {/* <Counter /> */}
-        <SidePanel/>
-        <Receipt />
-        <AmounttTaxInvoice />
-        <TaxTaxInvoice />
-        <button onClick={handlePrint} className={styles.printButton}>
-          Print
-        </button>
+    <div className={styles.mainContainer}>
+      {/* <Counter /> */}
+      <div className={styles.sidePanel}>
+        <SidePanel />
       </div>
+      <Receipt />
+      <AmounttTaxInvoice />
+      <TaxTaxInvoice />
+      <button onClick={handlePrint} className={styles.printButton}>
+        Print
+      </button>
+    </div>
   );
 };
 

@@ -1,5 +1,5 @@
 import React from "react";
-import Trowser from "../utils/Trowser";
+import Trowser from "../utils/Trowser/Trowser";
 import styles from "./TaxTaxInvoice.module.css";
 import sign from "../../sign.png";
 import QRCode from "react-qr-code";

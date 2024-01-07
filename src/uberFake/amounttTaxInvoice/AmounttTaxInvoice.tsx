@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./AmounttTaxInvoice.module.css";
-import Trowser from "../utils/Trowser";
+import Trowser from "../utils/Trowser/Trowser";
 import sign from "../../sign.png";
 
 const AmounttTaxInvoice = () => {

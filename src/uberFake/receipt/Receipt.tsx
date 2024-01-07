@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Receipt.module.css";
 import amex from "./../../amex-svgrepo-com.svg";
-import Trowser from "../utils/Trowser";
+import Trowser from "../utils/Trowser/Trowser";
 
 const Receipt = () => {
   return (

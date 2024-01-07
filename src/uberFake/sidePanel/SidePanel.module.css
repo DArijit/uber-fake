@@ -15,22 +15,10 @@
   margin-top: 50px;
   position: fixed;
   background-color: #d7d7d7;
-  padding: 10px;
-  opacity: 70%;
+  margin-left: 10px;
+  margin-right: 10px;
   border-radius: 8px;
-}
-
-.inputField {
-  width: 150px;
-  border-radius: 4px;
-  height: 19px;
-  padding: 5px;
-  margin: 15px;
-}
-
-.inputContainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  height: 80vh;
+  overflow-y: auto;
+  width: 97%;
 }

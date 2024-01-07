@@ -4,7 +4,8 @@
     size: A4;
     margin: 0;
   }
-  .printButton {
+  .printButton,
+  .sidePanel {
     display: none;
   }
 }
