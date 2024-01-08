@@ -2,7 +2,6 @@ import AmounttTaxInvoice from "./amounttTaxInvoice/AmounttTaxInvoice";
 import TaxTaxInvoice from "./TaxTaxInvoice/TaxTaxInvoice";
 import styles from "./UberFake.module.css";
 import Receipt from "./receipt/Receipt";
-import { Counter } from "../features/counter/Counter";
 import SidePanel from "./sidePanel/SidePanel";
 
 const UberFake = () => {
@@ -11,7 +10,6 @@ const UberFake = () => {
   };
   return (
     <div className={styles.mainContainer}>
-      {/* <Counter /> */}
       <div className={styles.sidePanel}>
         <SidePanel />
       </div>

@@ -2,18 +2,23 @@ import React from "react";
 import styles from "./AmounttTaxInvoice.module.css";
 import Trowser from "../utils/Trowser/Trowser";
 import sign from "../../sign.png";
+import { useSelector } from "react-redux";
+import { billDataState } from "../sidePanel/sidePanelSlice";
+import { formatDate } from "../utils/dateFormat/dateFormat";
 
 const AmounttTaxInvoice = () => {
+  const billData = useSelector(
+    (state: any) => state?.billData
+  ) as billDataState;
   return (
     <Trowser>
       <div className={styles.amountTaxInvoiceContainer}>
         <div className={styles.taxInvoiceHeading}>Tax Invoice</div>
         <div className={styles.taxInvoiceInfo}>
           <p className={styles.taxInfoIndividual}>
-            Arijit Das
+          {billData.riderName}
+            Pick up address: {billData.startedFromHome ? billData.homeAddress : billData.officeAddress}
             <br />
-            Pick up address: Swagat Nagar Rd, Mahesh Nagar, New Mankapur,
-            Nagpur, Maharashtra 440016, India
           </p>
 
           <p className={styles.taxInfoIndividual}>
@@ -29,7 +34,7 @@ const AmounttTaxInvoice = () => {
         <div className={styles.taxInvoiceInfo}>
           <p className={styles.taxInfoIndividual}>
             Invoice number: HBDDCACA23427838 <br />
-            Invoice date: 11 Dec 2023 <br />
+            Invoice date: {formatDate(billData.date)} <br />
             Place of supply (Name of state): Maharashtra <br />
             HSN Code: 996412 <br />
             Category of services: Passenger Transport Services <br />
@@ -53,19 +58,19 @@ const AmounttTaxInvoice = () => {
           </th>
         </tr>
         <tr>
-          <td>11 Dec 2023</td>
+          <td>{formatDate(billData.date)}</td>
           <td>Transportation service fare</td>
           <td>1</td>
           <td>SGST/UTGST 2.5%</td>
-          <td>₹2.32</td>
-          <td>₹92.82</td>
+          <td>&#8377;{(billData.transportationFee*0.025).toFixed(2)}</td>
+          <td>&#8377;{billData.transportationFee}</td>
         </tr>
         <tr className={styles.horizontalLine}>
           <td />
           <td />
           <td />
           <td>CGST 2.5%</td>
-          <td>₹2.32</td>
+          <td>&#8377;{(billData.transportationFee*0.025).toFixed(2)}</td>
           <td />
         </tr>
         <tr>
@@ -73,7 +78,7 @@ const AmounttTaxInvoice = () => {
           <td />
           <td />
           <td>Total net amount</td>
-          <td>₹92.82</td>
+          <td>&#8377;{(billData.transportationFee*1.05).toFixed(2)}</td>
           <td />
         </tr>
         <tr>
@@ -81,7 +86,7 @@ const AmounttTaxInvoice = () => {
           <td />
           <td />
           <td>Total CGST 2.5%</td>
-          <td>₹2.32</td>
+          <td>&#8377;{(billData.transportationFee*0.025).toFixed(2)}</td>
           <td />
         </tr>
         <tr>
@@ -89,7 +94,7 @@ const AmounttTaxInvoice = () => {
           <td />
           <td />
           <td>Total SGST/UTGST 2.5%</td>
-          <td>₹2.32</td>
+          <td>&#8377;{(billData.transportationFee*0.025).toFixed(2)}</td>
           <td />
         </tr>
         <tr>
@@ -97,7 +102,7 @@ const AmounttTaxInvoice = () => {
           <td />
           <td />
           <td>Total amount payable</td>
-          <td>₹97.46</td>
+          <td>&#8377;{(billData.transportationFee*1.05).toFixed(2)}</td>
           <td />
         </tr>
       </table>

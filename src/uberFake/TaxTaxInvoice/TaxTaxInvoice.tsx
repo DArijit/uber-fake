@@ -3,9 +3,31 @@ import Trowser from "../utils/Trowser/Trowser";
 import styles from "./TaxTaxInvoice.module.css";
 import sign from "../../sign.png";
 import QRCode from "react-qr-code";
+import { useSelector } from "react-redux";
+import { billDataState } from "../sidePanel/sidePanelSlice";
+import { formatDate } from "../utils/dateFormat/dateFormat";
 
 const TaxTaxInvoice = () => {
-  const qrCodeData = `Uber's GSTIN: 06AABCU6223H1ZI; Uber UPI ID: uberindiasystem@hdfcbank; Uber's bank account no.: 57500000195222 and IFSC - HDFC0000060C.; Invoice number: HR231203A7000248; Invoice date: 11 Dec 2023; Total invoice value: ₹4.30; Taxes: IGST: ₹0.66`;
+  const billData = useSelector(
+    (state: any) => state?.billData
+  ) as billDataState;
+
+  const qrCodeData = `Uber's GSTIN: 06AABCU6223H1ZI; Uber UPI ID: uberindiasystem@hdfcbank; Uber's bank account no.: 57500000195222 and IFSC - HDFC0000060C.; Invoice number: HR231203A7000248; Invoice date: ${formatDate(
+    billData.date
+  )}; Total invoice value: ₹${(
+    (billData.transportationFee / 3.74576271186) * 0.18 +
+    billData.bookingFee * 0.18 -
+    billData.promotion * 0.18 +
+    ((billData.transportationFee / 3.74576271186) * 0.18 +
+      billData.bookingFee * 0.18 -
+      billData.promotion * 0.18) *
+      0.18
+  ).toFixed(2)} ; Taxes: IGST: ₹${(
+    ((billData.transportationFee / 3.74576271186) * 0.18 +
+      billData.bookingFee * 0.18 -
+      billData.promotion * 0.18) *
+    0.18
+  ).toFixed(2)}`;
   return (
     <Trowser>
       {" "}
@@ -13,10 +35,9 @@ const TaxTaxInvoice = () => {
         <div className={styles.taxInvoiceHeading}>Tax Invoice</div>
         <div className={styles.taxInvoiceInfo}>
           <p className={styles.taxInfoIndividual}>
-            Arijit Das
+            {billData.riderName}
             <br />
-            Pick up address: Swagat Nagar Rd, Mahesh Nagar, New Mankapur,
-            Nagpur, Maharashtra 440016, India
+            {billData.startedFromHome ? billData.homeAddress : billData.officeAddress}
           </p>
 
           <p className={styles.taxInfoIndividual}></p>
@@ -28,7 +49,7 @@ const TaxTaxInvoice = () => {
         <div className={styles.taxInvoiceInfo}>
           <p className={styles.taxInfoIndividual}>
             Invoice number: HBDDCACA23427838 <br />
-            Invoice date: 11 Dec 2023 <br />
+            Invoice date: {formatDate(billData.date)} <br />
             Place of supply (Name of state): Maharashtra <br />
             HSN Code: 996412 <br />
             Tax is payable on reverse charge basis: No <br />
@@ -51,35 +72,44 @@ const TaxTaxInvoice = () => {
           </th>
         </tr>
         <tr>
-          <td>11 Dec 2023</td>
+          <td>{formatDate(billData.date)}</td>
           <td>Convenience fee</td>
           <td>1</td>
           <td>IGST 18%</td>
-          <td>₹4.46</td>
-          <td>₹24.78</td>
+          <td>
+            ₹{((billData.transportationFee / 3.74576271186) * 0.18).toFixed(2)}
+          </td>
+          <td>₹{(billData.transportationFee / 3.74576271186).toFixed(2)}</td>
         </tr>
         <tr>
-          <td>11 Dec 2023</td>
+          <td>{formatDate(billData.date)}</td>
           <td>Booking fee</td>
           <td>1</td>
           <td>IGST 18%</td>
-          <td>₹0.08</td>
-          <td>₹0.42</td>
+          <td>₹{(billData.bookingFee * 0.18).toFixed(2)}</td>
+          <td>₹{billData.bookingFee}</td>
         </tr>
         <tr className={styles.horizontalLine}>
-          <td>11 Dec 2023</td>
+          <td>{formatDate(billData.date)}</td>
           <td>Discount</td>
           <td>1</td>
           <td>IGST 18%</td>
-          <td>-₹3.88</td>
-          <td>-₹21.562</td>
+          <td>-₹{(billData.promotion * 0.18).toFixed(2)}</td>
+          <td>-₹{billData.promotion}</td>
         </tr>
         <tr>
           <td />
           <td />
           <td />
           <td>Total net amount</td>
-          <td>₹3.64</td>
+          <td>
+            ₹
+            {(
+              (billData.transportationFee / 3.74576271186) * 0.18 +
+              billData.bookingFee * 0.18 -
+              billData.promotion * 0.18
+            ).toFixed(2)}
+          </td>
           <td />
         </tr>
         <tr>
@@ -87,7 +117,15 @@ const TaxTaxInvoice = () => {
           <td />
           <td />
           <td>Total IGST 18%</td>
-          <td>₹0.66</td>
+          <td>
+            ₹
+            {(
+              ((billData.transportationFee / 3.74576271186) * 0.18 +
+                billData.bookingFee * 0.18 -
+                billData.promotion * 0.18) *
+              0.18
+            ).toFixed(2)}
+          </td>
           <td />
         </tr>
         <tr>
@@ -95,7 +133,18 @@ const TaxTaxInvoice = () => {
           <td />
           <td />
           <td>Total amount payable</td>
-          <td>₹4.30</td>
+          <td>
+            ₹
+            {(
+              (billData.transportationFee / 3.74576271186) * 0.18 +
+              billData.bookingFee * 0.18 -
+              billData.promotion * 0.18 +
+              ((billData.transportationFee / 3.74576271186) * 0.18 +
+                billData.bookingFee * 0.18 -
+                billData.promotion * 0.18) *
+                0.18
+            ).toFixed(2)}
+          </td>
           <td />
         </tr>
       </table>

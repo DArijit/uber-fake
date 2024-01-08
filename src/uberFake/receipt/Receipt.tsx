@@ -2,53 +2,99 @@ import React from "react";
 import styles from "./Receipt.module.css";
 import amex from "./../../amex-svgrepo-com.svg";
 import Trowser from "../utils/Trowser/Trowser";
+import { useSelector } from "react-redux";
+import { billDataState } from "../sidePanel/sidePanelSlice";
+import { formatDate } from "../utils/dateFormat/dateFormat";
+import { calculateTimeTake } from "../utils/time/timeDiff";
 
 const Receipt = () => {
+  const billData = useSelector(
+    (state: any) => state?.billData
+  ) as billDataState;
   return (
     <Trowser>
       <div className={styles.headerContainer}>
         <h1 className={styles.heroHeading}>Uber</h1>
-        <p className={styles.heroDate}>December 11, 2023</p>
+        <p className={styles.heroDate}>{formatDate(billData.date)}</p>
       </div>
       <div className={styles.salutationContainer}>
         <h2 className={styles.salutationText}>
-          Here's your receipt for your ride, Arijit
+          Here's your receipt for your ride, {billData.riderName}
         </h2>
         <p className={styles.salutationText2}>
-          We hope you enjoyed your ride this morning.
+          We hope you enjoyed your ride this{" "}
+          {billData.morningRide ? "morning" : "evening"}.
         </p>
       </div>
       <div>
         <div className={styles.totalContainer}>
           <h3 className={styles.totalHeading}>Total</h3>
           <p className={styles.totalAmt}>
-            <span>&#8377;101.76</span>
+            <span>
+              &#8377;{" "}
+              {(
+                billData.transportationFee * 1.05 +
+                ((billData.transportationFee / 3.74576271186) * 0.18 +
+                  billData.bookingFee * 0.18 -
+                  billData.promotion * 0.18 +
+                  ((billData.transportationFee / 3.74576271186) * 0.18 +
+                    billData.bookingFee * 0.18 -
+                    billData.promotion * 0.18) *
+                    0.18) +
+                billData.bookingFee -
+                billData.promotion
+              ).toFixed(2)}
+            </span>
           </p>
         </div>
         <div className={styles.subtotalsAndTripChargeContainer}>
           <div className={styles.totalTripContainer}>
-            <h3 className={styles.totalTripHeading}>Trip Charge</h3>
+            <h3 className={styles.totalTripHeading}>Transportation Fee</h3>
             <p className={styles.totalTripAmt}>
-              <span>&#8377;126.70</span>
+              <span>
+                &#8377;
+                {(
+                  billData.transportationFee * 1.05 +
+                  ((billData.transportationFee / 3.74576271186) * 0.18 +
+                    billData.bookingFee * 0.18 -
+                    billData.promotion * 0.18 +
+                    ((billData.transportationFee / 3.74576271186) * 0.18 +
+                      billData.bookingFee * 0.18 -
+                      billData.promotion * 0.18) *
+                      0.18)
+                ).toFixed(2)}
+              </span>
             </p>
           </div>
           <div className={styles.subtotalMainContainer}>
             <div className={styles.subtotalContainer}>
               <h3 className={styles.subtotalHeading}>Subtotal</h3>
               <p className={styles.subtotalAmt}>
-                <span>&#8377;126.70</span>
+                <span>
+                  &#8377;
+                  {(
+                    billData.transportationFee * 1.05 +
+                    ((billData.transportationFee / 3.74576271186) * 0.18 +
+                      billData.bookingFee * 0.18 -
+                      billData.promotion * 0.18 +
+                      ((billData.transportationFee / 3.74576271186) * 0.18 +
+                        billData.bookingFee * 0.18 -
+                        billData.promotion * 0.18) *
+                        0.18)
+                  ).toFixed(2)}
+                </span>
               </p>
             </div>
             <div className={styles.bookingFeeContainer}>
               <h3 className={styles.bookingFeeHeading}>Booking Fee</h3>
               <p className={styles.bookingFeeAmt}>
-                <span>&#8377;0.50</span>
+                <span>&#8377;{billData.bookingFee}</span>
               </p>
             </div>
             <div className={styles.promotionContainer}>
               <h3 className={styles.promotionHeading}>Promotion</h3>
               <p className={styles.promotionAmt}>
-                <span>-&#8377;25.44</span>
+                <span>-&#8377;{billData.promotion}</span>
               </p>
             </div>
           </div>
@@ -62,11 +108,27 @@ const Receipt = () => {
           <img src={amex} className={styles.paymentLogo} alt="" />
           <div className={styles.paymentInfo}>
             <span className={styles.paymentLogoName}>amex ****1003</span>
-            <span className={styles.paymentDate}>12/11/23 4:56PM</span>
+            <span className={styles.paymentDate}>
+              {billData.date} {billData.timeEnded}
+            </span>
           </div>
         </p>
         <p className={styles.totalAmt}>
-          <span>&#8377;101.76</span>
+          <span>
+            &#8377;{" "}
+            {(
+              billData.transportationFee * 1.05 +
+              ((billData.transportationFee / 3.74576271186) * 0.18 +
+                billData.bookingFee * 0.18 -
+                billData.promotion * 0.18 +
+                ((billData.transportationFee / 3.74576271186) * 0.18 +
+                  billData.bookingFee * 0.18 -
+                  billData.promotion * 0.18) *
+                  0.18) +
+              billData.bookingFee -
+              billData.promotion
+            ).toFixed(2)}
+          </span>
         </p>
       </div>
       <div className={styles.paymentInfoContainer}>
@@ -83,15 +145,33 @@ const Receipt = () => {
         </p>
 
         <p className={styles.paymentInfoDetails}>
-          The total of ₹101.76 has a GST of ₹5.30 included.
+          The total of ₹{" "}
+          {(
+            billData.transportationFee * 1.05 +
+            ((billData.transportationFee / 3.74576271186) * 0.18 +
+              billData.bookingFee * 0.18 -
+              billData.promotion * 0.18 +
+              ((billData.transportationFee / 3.74576271186) * 0.18 +
+                billData.bookingFee * 0.18 -
+                billData.promotion * 0.18) *
+                0.18) +
+            billData.bookingFee -
+            billData.promotion
+          ).toFixed(2)}{" "}
+          has a GST of ₹5.30 included.
         </p>
       </div>
       <div className={styles.receiptFooter}>
-        <p className={styles.driverName}>You rode with AMAR</p>
-        <p className={styles.driverLicense}>License Plate: MH12UM4916</p>
+        <p className={styles.driverName}>You rode with {billData.driverName}</p>
+        <p className={styles.driverLicense}>
+          License Plate: {`MH ${billData.stCode} ${billData.numberPlate}`}
+        </p>
         <div className={styles.tripDetailsContainer}>
           <p className={styles.skuTier}>Uber Go</p>
-          <p>5.09 kilometers | 15 min</p>
+          <p>
+            {billData.kilometer} kilometers |{" "}
+            {calculateTimeTake(billData.timeStarted, billData.timeEnded)} min
+          </p>
         </div>
         <div className={styles.mapTripContainer}>
           <div className={styles.mapSVG}>
@@ -104,22 +184,29 @@ const Receipt = () => {
             </svg>
           </div>
           <div className={styles.mapStringsContainer}>
-            <p>
-              <span>10:27</span>
-              <span>
-                {" "}
-                | 53M5+QF7, Swagat Nagar Rd, Mahesh Nagar, New Mankapur, Nagpur,
-                Maharashtra 440016, India
-              </span>
-            </p>
-            <p>
-              <span>10:51</span>
-              <span>
-                {" "}
-                | 6th Floor, VIPL Building, IT Park Rd, Subhash Nagar, Trimurtee
-                Nagar, Nagpur, Maharashtra 440022, India
-              </span>
-            </p>
+            {billData.startedFromHome ? (
+              <>
+                <p>
+                  <span>{billData.timeStarted}</span>
+                  <span> | {billData.homeAddress}</span>
+                </p>
+                <p>
+                  <span>{billData.timeEnded}</span>
+                  <span> | {billData.officeAddress}</span>
+                </p>
+              </>
+            ) : (
+              <>
+                <p>
+                  <span>{billData.timeEnded}</span>
+                  <span> | {billData.officeAddress}</span>
+                </p>
+                <p>
+                  <span>{billData.timeStarted}</span>
+                  <span> | {billData.homeAddress}</span>
+                </p>
+              </>
+            )}
           </div>
         </div>
       </div>

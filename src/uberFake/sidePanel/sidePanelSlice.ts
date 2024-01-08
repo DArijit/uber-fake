@@ -9,31 +9,48 @@ export interface billDataState {
   startedFromOffice: boolean;
   morningRide: boolean;
   eveningRide: boolean;
-  tripCharge: number;
+  transportationFee: number;
   bookingFee: number;
   promotion: number;
   driverName: string;
   numberPlate: string;
   stCode: number;
+  kilometer: number;
+  timeEnded: string;
+  timeStarted: string;
 }
+const getTimePeriod = (timeString: string) => {
+  const [hours] = timeString.split(":");
+  const hour = parseInt(hours, 10);
+
+  if (hour >= 0 && hour < 12) {
+    return "morning";
+  } else {
+    return "evening";
+  }
+};
 
 export const counterSlice = createSlice({
   name: "billData",
   initialState: {
-    riderName: "",
+    riderName: "vaibhavi",
     date: "",
-    homeAddress: "",
-    officeAddress: "",
+    homeAddress: `53M5+QF7, Swagat Nagar Rd, Mahesh Nagar, New Mankapur, Nagpur,
+    Maharashtra 440016, India`,
+    officeAddress: `6th Floor, VIPL Building, IT Park Rd, Subhash Nagar, Trimurtee Nagar, Nagpur, Maharashtra 440022, India`,
     startedFromHome: true,
     startedFromOffice: false,
     morningRide: true,
     eveningRide: false,
-    tripCharge: 0,
+    transportationFee: 367.58,
     bookingFee: 2,
-    promotion: 0,
-    driverName: "",
-    numberPlate: "",
+    promotion: 23,
+    driverName: "RAJU",
+    numberPlate: "GH5279",
     stCode: 31,
+    kilometer: 18,
+    timeEnded: "10:00",
+    timeStarted: "09:15",
   } as billDataState,
   reducers: {
     setRiderName: (state, action) => {
@@ -44,9 +61,11 @@ export const counterSlice = createSlice({
     },
     setStartFromHome: (state, action) => {
       state.startedFromHome = action.payload;
+      state.startedFromOffice = !action.payload;
     },
     setStartFromOffice: (state, action) => {
       state.startedFromOffice = action.payload;
+      state.startedFromHome = !action.payload;
     },
     setHomeAddress: (state, action) => {
       state.homeAddress = action.payload;
@@ -56,12 +75,14 @@ export const counterSlice = createSlice({
     },
     setMorningRide: (state, action) => {
       state.morningRide = action.payload;
+      state.eveningRide = !action.payload;
     },
     setEveningRide: (state, action) => {
       state.eveningRide = action.payload;
+      state.morningRide = !action.payload;
     },
-    setTripCharge: (state, action) => {
-      state.tripCharge = action.payload;
+    setTransportationFee: (state, action) => {
+      state.transportationFee = action.payload;
     },
     setBookingFee: (state, action) => {
       state.bookingFee = action.payload;
@@ -78,6 +99,21 @@ export const counterSlice = createSlice({
     setStCode: (state, action) => {
       state.stCode = action.payload;
     },
+    setKilometer: (state, action) => {
+      state.kilometer = action.payload;
+    },
+    setTimeEnded: (state, action) => {
+      state.timeEnded = action.payload;
+    },
+    setTimeStarted: (state, action) => {
+      state.timeStarted = action.payload;
+      getTimePeriod(action.payload) === "morning"
+        ? (state.morningRide = true)
+        : (state.morningRide = false);
+      getTimePeriod(action.payload) === "morning"
+        ? (state.eveningRide = false)
+        : (state.eveningRide = true);
+    },
   },
 });
 
@@ -88,7 +124,7 @@ export const {
   setHomeAddress,
   setOfficeAddress,
   setMorningRide,
-  setTripCharge,
+  setTransportationFee,
   setBookingFee,
   setPromotion,
   setDriverName,
@@ -96,7 +132,10 @@ export const {
   setStCode,
   setStartFromHome,
   setStartFromOffice,
-  setEveningRide
+  setEveningRide,
+  setKilometer,
+  setTimeEnded,
+  setTimeStarted,
 } = counterSlice.actions;
 
 export default counterSlice.reducer;
