@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/uber-fake/static/css/main.b59e1e80.css",
+    "main.js": "/uber-fake/static/js/main.a08c0cc6.js",
+    "static/js/787.435ca9e7.chunk.js": "/uber-fake/static/js/787.435ca9e7.chunk.js",
+    "static/media/sign.png": "/uber-fake/static/media/sign.283941d09bd6fe955270.png",
+    "static/media/UberMoveMedium.otf": "/uber-fake/static/media/UberMoveMedium.ffd4e7c1c17016ed7b69.otf",
+    "static/media/amex-svgrepo-com.svg": "/uber-fake/static/media/amex-svgrepo-com.22aaee4376da76bd2c8a941163926026.svg",
+    "index.html": "/uber-fake/index.html",
+    "main.b59e1e80.css.map": "/uber-fake/static/css/main.b59e1e80.css.map",
+    "main.a08c0cc6.js.map": "/uber-fake/static/js/main.a08c0cc6.js.map",
+    "787.435ca9e7.chunk.js.map": "/uber-fake/static/js/787.435ca9e7.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b59e1e80.css",
+    "static/js/main.a08c0cc6.js"
+  ]
+}
