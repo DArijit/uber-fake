@@ -30,6 +30,29 @@ const getTimePeriod = (timeString: string) => {
   }
 };
 
+const generateRandomString = () => {
+  const getRandomCharacter = () => {
+    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    const randomIndex = Math.floor(Math.random() * characters.length);
+    return characters.charAt(randomIndex);
+  };
+
+  const prefix = getRandomCharacter() + getRandomCharacter();
+  const randomPart = Math.floor(Math.random() * 10000)
+    .toString()
+    .padStart(4, "0");
+  const randomString = prefix + randomPart;
+
+  return randomString;
+};
+
+const getRandomNumber = () => {
+  const possibleNumbers = [30, 31, 49];
+  const randomIndex = Math.floor(Math.random() * possibleNumbers.length);
+  const randomNumber = possibleNumbers[randomIndex];
+  return randomNumber;
+};
+
 export const counterSlice = createSlice({
   name: "billData",
   initialState: {
@@ -46,11 +69,11 @@ export const counterSlice = createSlice({
     bookingFee: 2,
     promotion: 23,
     driverName: "RAJU",
-    numberPlate: "GH5279",
-    stCode: 31,
+    numberPlate: generateRandomString(),
+    stCode: getRandomNumber(),
     kilometer: 18,
-    timeEnded: "10:00",
-    timeStarted: "09:15",
+    timeEnded: "",
+    timeStarted: "",
   } as billDataState,
   reducers: {
     setRiderName: (state, action) => {

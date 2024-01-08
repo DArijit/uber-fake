@@ -3,7 +3,7 @@ import styles from "./SidePanel.module.css";
 import Table from "@mui/material/Table";
 import TableContainer from "@mui/material/TableContainer";
 import InputField from "../utils/InputField/InputField";
-import { Button } from "@mui/material";
+import { Alert, Button } from "@mui/material";
 import { useSelector } from "react-redux";
 import { billDataState } from "./sidePanelSlice";
 import {
@@ -23,13 +23,36 @@ import {
   setEveningRide,
   setKilometer,
   setTimeEnded,
-  setTimeStarted
+  setTimeStarted,
 } from "../sidePanel/sidePanelSlice";
+import { Error } from "@mui/icons-material";
 
-const SidePanel = () => {
+interface SidePanelProps {
+  handlePrint: () => void;
+}
+
+const SidePanel = ({ handlePrint }: SidePanelProps) => {
   const [isSidePanelOpen, setSidePanelOpen] = useState(false);
+  const [error, setError] = useState("");
   const handleEditClick = () => setSidePanelOpen(!isSidePanelOpen);
-  const billData = useSelector((state: any) => state?.billData) as billDataState;
+  const billData = useSelector(
+    (state: any) => state?.billData
+  ) as billDataState;
+  const handlePrintClick = () => {
+    if (billData?.date?.length === 0) {
+      setError('please set trip date')
+      return;
+    }
+    if (billData?.timeStarted?.length === 0) {
+      setError('please set time started')
+      return;
+    }
+    if (billData?.timeEnded?.length === 0) {
+      setError('please set time ended')
+      return;
+    }
+    handlePrint();
+  };
 
   return (
     <div className={styles.sidePanelContainer}>
@@ -64,7 +87,7 @@ const SidePanel = () => {
                 changeHandler={setTimeStarted}
                 value={billData.timeStarted}
               />
-               <InputField
+              <InputField
                 inputName="Time ended"
                 inputType="time"
                 changeHandler={setTimeEnded}
@@ -142,6 +165,7 @@ const SidePanel = () => {
                 changeHandler={setStCode}
                 value={billData.stCode}
               />
+              {error.length > 0 ? <Alert severity="error">{error}</Alert> : ""}
             </Table>
             <div className={styles.printButtonWrapper}>
               <div className={styles.Button}>
@@ -150,7 +174,9 @@ const SidePanel = () => {
                 </Button>
               </div>
               <div className={styles.Button}>
-                <Button variant="contained">Print</Button>
+                <Button variant="contained" onClick={handlePrintClick}>
+                  Print
+                </Button>
               </div>
             </div>
           </TableContainer>

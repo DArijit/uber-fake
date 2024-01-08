@@ -11,7 +11,7 @@ const UberFake = () => {
   return (
     <div className={styles.mainContainer}>
       <div className={styles.sidePanel}>
-        <SidePanel />
+        <SidePanel handlePrint={handlePrint}/>
       </div>
       <Receipt />
       <AmounttTaxInvoice />
