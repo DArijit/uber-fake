@@ -25,7 +25,6 @@ import {
   setTimeEnded,
   setTimeStarted,
 } from "../sidePanel/sidePanelSlice";
-import { Error } from "@mui/icons-material";
 
 interface SidePanelProps {
   handlePrint: () => void;
