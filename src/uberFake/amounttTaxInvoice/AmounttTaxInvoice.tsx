@@ -5,19 +5,24 @@ import sign from "../../sign.png";
 import { useSelector } from "react-redux";
 import { billDataState } from "../sidePanel/sidePanelSlice";
 import { formatDate } from "../utils/dateFormat/dateFormat";
+import { invoiceNumber } from "../utils/invoiceNumber/invoiceNumber";
 
 const AmounttTaxInvoice = () => {
   const billData = useSelector(
     (state: any) => state?.billData
   ) as billDataState;
+
   return (
     <Trowser>
       <div className={styles.amountTaxInvoiceContainer}>
         <div className={styles.taxInvoiceHeading}>Tax Invoice</div>
         <div className={styles.taxInvoiceInfo}>
           <p className={styles.taxInfoIndividual}>
-          {billData.riderName}
-            Pick up address: {billData.startedFromHome ? billData.homeAddress : billData.officeAddress}
+            {billData.riderName}
+            Pick up address:{" "}
+            {billData.startedFromHome
+              ? billData.homeAddress
+              : billData.officeAddress}
             <br />
           </p>
 
@@ -25,15 +30,14 @@ const AmounttTaxInvoice = () => {
             Invoice issued by Uber India Systems Private Limited on behalf of:
             <br />
             Everest Fleet Private Limited Pune C-105,1,Mhatre Pen Industrial CHS
-            Wing B,Senapati Bapat Marg, 400028, Mumbai, Maharashtra, IN-MH
-            India
+            Wing B,Senapati Bapat Marg, 400028, Mumbai, Maharashtra, IN-MH India
             <br />
             GSTIN: 27AAFCE2496Q1ZW
           </p>
         </div>
         <div className={styles.taxInvoiceInfo}>
           <p className={styles.taxInfoIndividual}>
-            Invoice number: HBDDCACA23427838 <br />
+            Invoice number: {invoiceNumber} <br />
             Invoice date: {formatDate(billData.date)} <br />
             Place of supply (Name of state): Maharashtra <br />
             HSN Code: 996412 <br />
@@ -62,7 +66,7 @@ const AmounttTaxInvoice = () => {
           <td>Transportation service fare</td>
           <td>1</td>
           <td>SGST/UTGST 2.5%</td>
-          <td>&#8377;{(billData.transportationFee*0.025).toFixed(2)}</td>
+          <td>&#8377;{(billData.transportationFee * 0.025).toFixed(2)}</td>
           <td>&#8377;{billData.transportationFee}</td>
         </tr>
         <tr className={styles.horizontalLine}>
@@ -70,7 +74,7 @@ const AmounttTaxInvoice = () => {
           <td />
           <td />
           <td>CGST 2.5%</td>
-          <td>&#8377;{(billData.transportationFee*0.025).toFixed(2)}</td>
+          <td>&#8377;{(billData.transportationFee * 0.025).toFixed(2)}</td>
           <td />
         </tr>
         <tr>
@@ -78,32 +82,32 @@ const AmounttTaxInvoice = () => {
           <td />
           <td />
           <td>Total net amount</td>
-          <td>&#8377;{(billData.transportationFee*1.05).toFixed(2)}</td>
           <td />
+          <td>&#8377;{(billData.transportationFee * 1.05).toFixed(2)}</td>
         </tr>
         <tr>
           <td />
           <td />
           <td />
           <td>Total CGST 2.5%</td>
-          <td>&#8377;{(billData.transportationFee*0.025).toFixed(2)}</td>
           <td />
+          <td>&#8377;{(billData.transportationFee * 0.025).toFixed(2)}</td>
         </tr>
         <tr>
           <td />
           <td />
           <td />
           <td>Total SGST/UTGST 2.5%</td>
-          <td>&#8377;{(billData.transportationFee*0.025).toFixed(2)}</td>
           <td />
+          <td>&#8377;{(billData.transportationFee * 0.025).toFixed(2)}</td>
         </tr>
         <tr>
           <td />
           <td />
           <td />
           <td>Total amount payable</td>
-          <td>&#8377;{(billData.transportationFee*1.05).toFixed(2)}</td>
           <td />
+          <td>&#8377;{(billData.transportationFee * 1.05).toFixed(2)}</td>
         </tr>
       </table>
       <div className={styles.signContainer}>

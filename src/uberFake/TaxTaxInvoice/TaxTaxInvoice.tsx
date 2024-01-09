@@ -6,6 +6,7 @@ import QRCode from "react-qr-code";
 import { useSelector } from "react-redux";
 import { billDataState } from "../sidePanel/sidePanelSlice";
 import { formatDate } from "../utils/dateFormat/dateFormat";
+import { invoiceNumber } from "../utils/invoiceNumber/invoiceNumber";
 
 const TaxTaxInvoice = () => {
   const billData = useSelector(
@@ -37,7 +38,9 @@ const TaxTaxInvoice = () => {
           <p className={styles.taxInfoIndividual}>
             {billData.riderName}
             <br />
-            {billData.startedFromHome ? billData.homeAddress : billData.officeAddress}
+            {billData.startedFromHome
+              ? billData.homeAddress
+              : billData.officeAddress}
           </p>
 
           <p className={styles.taxInfoIndividual}></p>
@@ -48,7 +51,7 @@ const TaxTaxInvoice = () => {
         </div>
         <div className={styles.taxInvoiceInfo}>
           <p className={styles.taxInfoIndividual}>
-            Invoice number: HBDDCACA23427838 <br />
+            Invoice number: {invoiceNumber} <br />
             Invoice date: {formatDate(billData.date)} <br />
             Place of supply (Name of state): Maharashtra <br />
             HSN Code: 996412 <br />
@@ -102,6 +105,7 @@ const TaxTaxInvoice = () => {
           <td />
           <td />
           <td>Total net amount</td>
+          <td />
           <td>
             ₹
             {(
@@ -110,13 +114,13 @@ const TaxTaxInvoice = () => {
               billData.promotion * 0.18
             ).toFixed(2)}
           </td>
-          <td />
         </tr>
         <tr>
           <td />
           <td />
           <td />
           <td>Total IGST 18%</td>
+          <td />
           <td>
             ₹
             {(
@@ -126,13 +130,13 @@ const TaxTaxInvoice = () => {
               0.18
             ).toFixed(2)}
           </td>
-          <td />
         </tr>
         <tr>
           <td />
           <td />
           <td />
           <td>Total amount payable</td>
+          <td />
           <td>
             ₹
             {(
@@ -145,12 +149,12 @@ const TaxTaxInvoice = () => {
                 0.18
             ).toFixed(2)}
           </td>
-          <td />
         </tr>
       </table>
       <div className={styles.qrCode}>
         <QRCode value={qrCodeData} size={150} />
       </div>
+      Payment of 0.00 received via payment_method.zaakpay.display_name on {billData.date} {billData.timeEnded} India Standard Time
       <div className={styles.signContainer}>
         <div></div>
         <img src={sign} alt="" className={styles.sign} />

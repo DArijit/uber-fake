@@ -32,7 +32,7 @@ const getTimePeriod = (timeString: string) => {
 
 const generateRandomString = () => {
   const getRandomCharacter = () => {
-    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     const randomIndex = Math.floor(Math.random() * characters.length);
     return characters.charAt(randomIndex);
   };
@@ -47,7 +47,7 @@ const generateRandomString = () => {
 };
 
 const getRandomNumber = () => {
-  const possibleNumbers = [30, 31, 49];
+  const possibleNumbers = [30, 31, 32, 34, 36, 40, 27, 49];
   const randomIndex = Math.floor(Math.random() * possibleNumbers.length);
   const randomNumber = possibleNumbers[randomIndex];
   return randomNumber;
@@ -71,7 +71,7 @@ export const counterSlice = createSlice({
     driverName: "RAJU",
     numberPlate: generateRandomString(),
     stCode: getRandomNumber(),
-    kilometer: 18,
+    kilometer: 22,
     timeEnded: "",
     timeStarted: "",
   } as billDataState,

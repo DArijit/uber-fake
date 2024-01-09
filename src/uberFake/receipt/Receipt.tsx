@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Receipt.module.css";
-import amex from "./../../amex-svgrepo-com.svg";
+import cash from "./../../Cash.png";
 import Trowser from "../utils/Trowser/Trowser";
 import { useSelector } from "react-redux";
 import { billDataState } from "../sidePanel/sidePanelSlice";
@@ -49,7 +49,7 @@ const Receipt = () => {
         </div>
         <div className={styles.subtotalsAndTripChargeContainer}>
           <div className={styles.totalTripContainer}>
-            <h3 className={styles.totalTripHeading}>Transportation Fee</h3>
+            <h3 className={styles.totalTripHeading}>Trip Charge</h3>
             <p className={styles.totalTripAmt}>
               <span>
                 &#8377;
@@ -105,9 +105,9 @@ const Receipt = () => {
       </div>
       <div className={styles.paymentsSectionContainer}>
         <p>
-          <img src={amex} className={styles.paymentLogo} alt="" />
+          <img src={cash} className={styles.paymentLogo} alt="" />
           <div className={styles.paymentInfo}>
-            <span className={styles.paymentLogoName}>amex ****1003</span>
+            <span className={styles.paymentLogoName}>Cash</span>
             <span className={styles.paymentDate}>
               {billData.date} {billData.timeEnded}
             </span>
@@ -158,7 +158,17 @@ const Receipt = () => {
             billData.bookingFee -
             billData.promotion
           ).toFixed(2)}{" "}
-          has a GST of ₹5.30 included.
+          has a GST of ₹
+          {(
+            (billData.transportationFee / 3.74576271186) * 0.18 +
+            billData.bookingFee * 0.18 -
+            billData.promotion * 0.18 +
+            ((billData.transportationFee / 3.74576271186) * 0.18 +
+              billData.bookingFee * 0.18 -
+              billData.promotion * 0.18) *
+              0.18
+          ).toFixed(2)}{" "}
+          included.
         </p>
       </div>
       <div className={styles.receiptFooter}>
