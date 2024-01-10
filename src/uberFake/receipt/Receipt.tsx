@@ -194,29 +194,28 @@ const Receipt = () => {
             </svg>
           </div>
           <div className={styles.mapStringsContainer}>
-            {billData.startedFromHome ? (
-              <>
-                <p>
-                  <span>{billData.timeStarted}</span>
-                  <span> | {billData.homeAddress}</span>
-                </p>
-                <p>
-                  <span>{billData.timeEnded}</span>
-                  <span> | {billData.officeAddress}</span>
-                </p>
-              </>
-            ) : (
-              <>
-                <p>
-                  <span>{billData.timeEnded}</span>
-                  <span> | {billData.officeAddress}</span>
-                </p>
-                <p>
-                  <span>{billData.timeStarted}</span>
-                  <span> | {billData.homeAddress}</span>
-                </p>
-              </>
-            )}
+            <>
+              <p>
+                <span>{billData.timeStarted}</span>
+                <span>
+                  {" "}
+                  |{" "}
+                  {billData.startedFromHome
+                    ? billData.homeAddress
+                    : billData.officeAddress}
+                </span>
+              </p>
+              <p>
+                <span>{billData.timeEnded}</span>
+                <span>
+                  {" "}
+                  |{" "}
+                  {!billData.startedFromHome
+                    ? billData.homeAddress
+                    : billData.officeAddress}
+                </span>
+              </p>
+            </>
           </div>
         </div>
       </div>
