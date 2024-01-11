@@ -6,7 +6,9 @@ import SidePanel from "./sidePanel/SidePanel";
 
 const UberFake = () => {
   const handlePrint = () => {
-    window.print(); // Open print dialog and print visible DOM without any changes
+    window.print();
+    // eslint-disable-next-line no-restricted-globals
+    location.reload();
   };
   return (
     <div className={styles.mainContainer}>
