@@ -11,8 +11,6 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
-  useMediaQuery,
-  useTheme,
 } from "@mui/material";
 import { useSelector } from "react-redux";
 import { billDataState } from "./sidePanelSlice";
@@ -21,7 +19,6 @@ import {
   setDate,
   setHomeAddress,
   setOfficeAddress,
-  setMorningRide,
   setTransportationFee,
   setBookingFee,
   setPromotion,
@@ -30,7 +27,6 @@ import {
   setStCode,
   setStartFromHome,
   setStartFromOffice,
-  setEveningRide,
   setKilometer,
   setTimeEnded,
   setTimeStarted,
