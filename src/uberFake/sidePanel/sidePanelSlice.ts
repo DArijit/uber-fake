@@ -75,7 +75,7 @@ export const counterSlice = createSlice({
     transportationFee: randomTransasportationFee(),
     bookingFee: 2,
     promotion: 23,
-    driverName: "RAJU",
+    driverName: "",
     numberPlate: generateRandomString(),
     stCode: getRandomNumber(),
     kilometer: 22,

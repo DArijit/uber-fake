@@ -73,6 +73,10 @@ const SidePanel = ({ handlePrint }: SidePanelProps) => {
       setError("please set time ended");
       return;
     }
+    if (billData?.driverName?.length === 0) {
+      setError("please enter driver's name");
+      return;
+    }
     if (
       billData.startedFromHome &&
       billData.eveningRide &&
