@@ -1,3 +1,5 @@
 .a4Trowser {
-    page-break-before: always;
-  }
+  page-break-before: always;
+  padding-left: 40px;
+  padding-right: 40px;
+}

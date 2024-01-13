@@ -58,7 +58,7 @@ const SidePanel = ({ handlePrint }: SidePanelProps) => {
   const handleEditClick = () => setSidePanelOpen(!isSidePanelOpen);
 
   const billData = useSelector(
-    (state: any) => state?.billData
+    (state: any) => state?.billData,
   ) as billDataState;
   const handlePrintClick = () => {
     if (billData?.date?.length === 0) {
@@ -80,7 +80,8 @@ const SidePanel = ({ handlePrint }: SidePanelProps) => {
     ) {
       setWarning({
         isOpen: true,
-        message: "you choose an evening time but you choose started from home",
+        message:
+          "you choosed an evening time but you started from home, did you start from home?",
       });
       return;
     }
@@ -92,7 +93,7 @@ const SidePanel = ({ handlePrint }: SidePanelProps) => {
       setWarning({
         isOpen: true,
         message:
-          "you choose a morning time and but you choose started from office",
+          "you choosed a morning time and but you started from office, did you start from office?",
       });
       return;
     }
@@ -104,8 +105,8 @@ const SidePanel = ({ handlePrint }: SidePanelProps) => {
         isOpen: true,
         message: `your total time travel is ${calculateTimeTake(
           billData.timeStarted,
-          billData.timeEnded
-        )} mins`,
+          billData.timeEnded,
+        )} mins, did you travelled that long?`,
       });
       return;
     }

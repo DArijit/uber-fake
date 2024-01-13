@@ -9,7 +9,7 @@ import { invoiceNumber } from "../utils/invoiceNumber/invoiceNumber";
 
 const AmounttTaxInvoice = () => {
   const billData = useSelector(
-    (state: any) => state?.billData
+    (state: any) => state?.billData,
   ) as billDataState;
 
   return (
@@ -19,6 +19,7 @@ const AmounttTaxInvoice = () => {
         <div className={styles.taxInvoiceInfo}>
           <p className={styles.taxInfoIndividual}>
             {billData.riderName}
+            <br />
             Pick up address:{" "}
             {billData.startedFromHome
               ? billData.homeAddress
@@ -119,8 +120,10 @@ const AmounttTaxInvoice = () => {
           Details of ECO under GST: <br />
         </div>
         <div className={styles.footer}>
-          Uber India Systems Private Limited / Plot No. 17/18, Level 13 Platinum
-          Techno Park Sector 30A Vashi, Navi
+          Uber India Systems Private Limited / Plot No. 17/18, Level 13
+        </div>
+        <div className={styles.footer}>
+          Platinum Techno Park Sector 30A Vashi, Navi
         </div>
         <div className={styles.footer}>
           Mumbai, Maharashtra / GST: 27AABCU6223H1ZE

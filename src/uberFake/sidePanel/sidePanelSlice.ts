@@ -53,6 +53,13 @@ const getRandomNumber = () => {
   return randomNumber;
 };
 
+const randomTransasportationFee = (): number => {
+  const min = 350.0;
+  const max = 500.0;
+  const num = Math.random() * (max - min) + min;
+  return +num.toFixed(2);
+};
+
 export const counterSlice = createSlice({
   name: "billData",
   initialState: {
@@ -65,7 +72,7 @@ export const counterSlice = createSlice({
     startedFromOffice: false,
     morningRide: true,
     eveningRide: false,
-    transportationFee: 367.58,
+    transportationFee: randomTransasportationFee(),
     bookingFee: 2,
     promotion: 23,
     driverName: "RAJU",
