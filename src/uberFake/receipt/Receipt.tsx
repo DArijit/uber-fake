@@ -9,7 +9,7 @@ import { calculateTimeTake } from "../utils/time/timeDiff";
 
 const Receipt = () => {
   const billData = useSelector(
-    (state: any) => state?.billData
+    (state: any) => state?.billData,
   ) as billDataState;
   return (
     <Trowser>
@@ -174,13 +174,13 @@ const Receipt = () => {
       <div className={styles.receiptFooter}>
         <p className={styles.driverName}>You rode with {billData.driverName}</p>
         <p className={styles.driverLicense}>
-          License Plate: {`MH ${billData.stCode} ${billData.numberPlate}`}
+          License Plate: {`MH${billData.stCode}${billData.numberPlate}`}
         </p>
         <div className={styles.tripDetailsContainer}>
           <p className={styles.skuTier}>Uber Go</p>
-          <p>
+          <p className={styles.tripDetails}>
             {billData.kilometer} kilometers |{" "}
-            {calculateTimeTake(billData.timeStarted, billData.timeEnded)} min
+            {calculateTimeTake(billData.timeStarted, billData.timeEnded)} min(s)
           </p>
         </div>
         <div className={styles.mapTripContainer}>
@@ -197,7 +197,7 @@ const Receipt = () => {
             <>
               <p>
                 <span>{billData.timeStarted}</span>
-                <span>
+                <span className={styles.address}>
                   {" "}
                   |{" "}
                   {billData.startedFromHome
@@ -207,7 +207,7 @@ const Receipt = () => {
               </p>
               <p>
                 <span>{billData.timeEnded}</span>
-                <span>
+                <span className={styles.address}>
                   {" "}
                   |{" "}
                   {!billData.startedFromHome

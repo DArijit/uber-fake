@@ -1,63 +1,72 @@
-.taxInfoUber{
-font-size: 60px
+.taxInfoUber {
+  font-size: 50px;
+  margin: 0;
 }
 .taxInvoiceHeading {
-    display: flex;
-    justify-content: center;
-    margin: 50px;
-  }
-  .amountTaxInvoiceContainer {
-    margin-top: 50px;
-    font-weight: 500;
-  }
-  
-  .taxInvoiceInfo {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .taxInfoIndividual {
-    width: 320px;
-    margin: 0px;
-  }
-  .table {
-    width: 100%;
-  }
-  .table td {
-    padding: 0px;
-    margin: 0px;
-    border: 0px;
-  }
-  .horizontalLine th {
-    border-bottom: 1px solid black;
-    padding: 0px;
-  }
-  .horizontalLine td {
-    border-bottom: 1px solid black;
-    padding: 0px;
-  }
-  .table th {
-    text-align: left;
-  }
-  
-  .sign {
-    width: 30%;
-  }
-  
-  .signContainer {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .footer {
-    font-weight: 500;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .footerContainer {
-      margin-top: 40px
-  }
-  .qrCode{
-    margin-top: 40px
-  }
+  display: flex;
+  justify-content: center;
+  margin: 50px;
+}
+.amountTaxInvoiceContainer {
+  font-size: 12px;
+  margin-top: 50px;
+  font-weight: 500;
+}
+
+.taxInvoiceInfo {
+  display: flex;
+  justify-content: space-between;
+}
+
+.taxInfoIndividual {
+  width: 280px;
+  margin: 0px;
+}
+.table {
+  font-size: 12px;
+  width: 100%;
+}
+.table td {
+  padding: 0px;
+  margin: 0px;
+  border: 0px;
+}
+.horizontalLine th {
+  border-bottom: 1px solid black;
+  padding: 0px;
+}
+.horizontalLine td {
+  border-bottom: 1px solid black;
+  padding: 0px;
+}
+.table th {
+  text-align: left;
+}
+
+.sign {
+  width: 30%;
+}
+
+.signContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer {
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+}
+
+.footerContainer {
+  margin-top: 270px;
+  font-size: 12px;
+}
+.qrCode {
+  margin-top: 40px;
+}
+
+.footerText {
+  padding-top: 20px;
+  font-size: 12px;
+}

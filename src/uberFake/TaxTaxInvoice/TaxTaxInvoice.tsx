@@ -13,7 +13,7 @@ const TaxTaxInvoice = () => {
     (state: any) => state?.billData,
   ) as billDataState;
 
-  const qrCodeData = `Uber's GSTIN: 06AABCU6223H1ZI; Uber UPI ID: uberindiasystem@hdfcbank; Uber's bank account no.: 57500000195222 and IFSC - HDFC0000060C.; Invoice number: HR231203A7000248; Invoice date: ${formatDate(
+  const qrCodeData = `Uber's GSTIN: 06AABCU6223H1ZI; Uber UPI ID: uberindiasystem@hdfcbank; Uber's bank account no.: 57500000195222 and IFSC - HDFC0000060C.; Invoice number: ${invoiceNumber}; Invoice date: ${formatDate(
     billData.date,
   )}; Total invoice value: ₹${(
     (billData.transportationFee / 3.74576271186) * 0.18 +
@@ -152,31 +152,30 @@ const TaxTaxInvoice = () => {
         </tr>
       </table>
       <div className={styles.qrCode}>
-        <QRCode value={qrCodeData} size={150} />
+        <QRCode value={qrCodeData} size={200} />
       </div>
-      Payment of{" "}
-      {(
-        billData.transportationFee * 1.05 +
-        ((billData.transportationFee / 3.74576271186) * 0.18 +
-          billData.bookingFee * 0.18 -
-          billData.promotion * 0.18 +
+      <div className={styles.footerText}>
+        Payment of ₹
+        {(
+          billData.transportationFee * 1.05 +
           ((billData.transportationFee / 3.74576271186) * 0.18 +
             billData.bookingFee * 0.18 -
-            billData.promotion * 0.18) *
-            0.18) +
-        billData.bookingFee -
-        billData.promotion
-      ).toFixed(2)}{" "}
-      received via cash on {billData.date} {billData.timeEnded} India Standard
-      Time
+            billData.promotion * 0.18 +
+            ((billData.transportationFee / 3.74576271186) * 0.18 +
+              billData.bookingFee * 0.18 -
+              billData.promotion * 0.18) *
+              0.18) +
+          billData.bookingFee -
+          billData.promotion
+        ).toFixed(2)}{" "}
+        received via cash on {billData.date} {billData.timeEnded} India Standard
+        Time
+      </div>
       <div className={styles.signContainer}>
         <div></div>
         <img src={sign} alt="" className={styles.sign} />
       </div>
       <div className={styles.footerContainer}>
-        <div className={styles.footer}>
-          Details of ECO under GST: <br />
-        </div>
         <div className={styles.footer}>
           Uber India Systems Private Limited / Plot No. 17/18, Level 13
         </div>

@@ -24,7 +24,7 @@ export const formatDate = (inputDate: string) => {
   const year = parsedDate.getFullYear();
 
   // Format the date string
-  const formattedDate = `${day} ${monthNames[monthIndex]}, ${year}`;
+  const formattedDate = `${day} ${monthNames[monthIndex]} ${year}`;
 
   return formattedDate;
 };

@@ -4,6 +4,7 @@
   margin: 50px;
 }
 .amountTaxInvoiceContainer {
+  font-size: 12px;
   margin-top: 50px;
   font-weight: 500;
 }
@@ -14,11 +15,12 @@
 }
 
 .taxInfoIndividual {
-  width: 320px;
+  width: 280px;
   margin: 0px;
 }
 .table {
   width: 100%;
+  font-size: 12px;
 }
 .table td {
   font-weight: 100;
@@ -54,5 +56,6 @@
 }
 
 .footerContainer {
-    margin-top: 320px
+  font-size: 12px;
+  margin-top: 540px;
 }

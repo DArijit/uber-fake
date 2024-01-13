@@ -13,14 +13,11 @@ const UberFake = () => {
   return (
     <div className={styles.mainContainer}>
       <div className={styles.sidePanel}>
-        <SidePanel handlePrint={handlePrint}/>
+        <SidePanel handlePrint={handlePrint} />
       </div>
       <Receipt />
       <AmounttTaxInvoice />
       <TaxTaxInvoice />
-      <button onClick={handlePrint} className={styles.printButton}>
-        Print
-      </button>
     </div>
   );
 };
