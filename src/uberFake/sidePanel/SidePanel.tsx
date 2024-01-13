@@ -236,7 +236,7 @@ const SidePanel = ({ handlePrint }: SidePanelProps) => {
                   inputName="Started from Home"
                   menuItems={[
                     `53M5+QF7, Swagat Nagar Rd, Mahesh Nagar, New Mankapur, Nagpur,
-    Maharashtra 440016, India`,
+    Maharashtra 440013, India`,
                     `Creative Homes, Green Villa-3, Shriram sq, Gorewada, Katol Road, Nagpur-440013`,
                   ]}
                   changeHandler={setHomeAddress}

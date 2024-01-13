@@ -66,7 +66,7 @@ export const counterSlice = createSlice({
     riderName: "vaibhavi",
     date: "",
     homeAddress: `53M5+QF7, Swagat Nagar Rd, Mahesh Nagar, New Mankapur, Nagpur,
-    Maharashtra 440016, India`,
+    Maharashtra 440013, India`,
     officeAddress: `6th Floor, VIPL Building, IT Park Rd, Subhash Nagar, Trimurtee Nagar, Nagpur, Maharashtra 440022, India`,
     startedFromHome: true,
     startedFromOffice: false,
