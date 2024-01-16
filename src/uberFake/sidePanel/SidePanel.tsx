@@ -2,6 +2,9 @@ import { useState } from "react";
 import styles from "./SidePanel.module.css";
 import Table from "@mui/material/Table";
 import TableContainer from "@mui/material/TableContainer";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableRow from "@mui/material/TableRow";
 import InputField from "../utils/InputField/InputField";
 import {
   Alert,
@@ -220,6 +223,25 @@ const SidePanel = ({ handlePrint }: SidePanelProps) => {
                   changeHandler={setTimeEnded}
                   value={billData.timeEnded}
                 />
+                <TableBody>
+                  <TableRow>
+                    <TableCell className={styles.value}>
+                      Total time travelled
+                    </TableCell>
+                    <TableCell align="right" className={styles.value}>
+                      {" "}
+                      {calculateTimeTake(
+                        billData.timeStarted,
+                        billData.timeEnded,
+                      )}{" "}
+                      mins
+                    </TableCell>
+                    <TableCell align="right" className={styles.value}>
+                      This is auto generated
+                    </TableCell>
+                  </TableRow>
+                </TableBody>
+
                 <InputField
                   inputName="Started from Home"
                   inputType="checkbox"

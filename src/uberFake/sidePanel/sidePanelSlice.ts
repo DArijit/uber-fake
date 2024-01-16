@@ -78,7 +78,7 @@ export const counterSlice = createSlice({
     driverName: "",
     numberPlate: generateRandomString(),
     stCode: getRandomNumber(),
-    kilometer: 22.07,
+    kilometer: 22,
     timeEnded: "",
     timeStarted: "",
   } as billDataState,
