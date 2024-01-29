@@ -8,6 +8,7 @@ export interface billDataState {
   startedFromHome: boolean;
   startedFromOffice: boolean;
   morningRide: boolean;
+  afternoonRide: boolean;
   eveningRide: boolean;
   transportationFee: number;
   bookingFee: number;
@@ -25,6 +26,8 @@ const getTimePeriod = (timeString: string) => {
 
   if (hour >= 0 && hour < 12) {
     return "morning";
+  } else if (hour >= 12 && hour < 16) {
+    return "afternoon";
   } else {
     return "evening";
   }
@@ -71,6 +74,7 @@ export const counterSlice = createSlice({
     startedFromHome: true,
     startedFromOffice: false,
     morningRide: true,
+    afternoonRide: false,
     eveningRide: false,
     transportationFee: randomTransasportationFee(),
     bookingFee: 2,
@@ -137,12 +141,23 @@ export const counterSlice = createSlice({
     },
     setTimeStarted: (state, action) => {
       state.timeStarted = action.payload;
-      getTimePeriod(action.payload) === "morning"
-        ? (state.morningRide = true)
-        : (state.morningRide = false);
-      getTimePeriod(action.payload) === "morning"
-        ? (state.eveningRide = false)
-        : (state.eveningRide = true);
+      if (getTimePeriod(action.payload) === "morning") {
+        state.morningRide = true;
+        state.eveningRide = false;
+        state.afternoonRide = false;
+      }
+
+      if (getTimePeriod(action.payload) === "evening") {
+        state.morningRide = false;
+        state.eveningRide = true;
+        state.afternoonRide = false;
+      }
+
+      if (getTimePeriod(action.payload) === "afternoon") {
+        state.morningRide = false;
+        state.eveningRide = false;
+        state.afternoonRide = true;
+      }
     },
   },
 });

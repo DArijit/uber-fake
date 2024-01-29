@@ -11,6 +11,16 @@ const Receipt = () => {
   const billData = useSelector(
     (state: any) => state?.billData,
   ) as billDataState;
+
+  const rideSalutetion = () => {
+    if (billData.morningRide) {
+      return "morning";
+    }
+    if (billData.eveningRide) {
+      return "evening";
+    }
+    return "afternoon";
+  };
   return (
     <Trowser>
       <div className={styles.headerContainer}>
@@ -22,8 +32,7 @@ const Receipt = () => {
           Here's your receipt for your ride, {billData.riderName}
         </h2>
         <p className={styles.salutationText2}>
-          We hope you enjoyed your ride this{" "}
-          {billData.morningRide ? "morning" : "evening"}.
+          We hope you enjoyed your ride this {rideSalutetion()}.
         </p>
       </div>
       <div>
